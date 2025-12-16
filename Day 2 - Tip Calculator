@@ -1,0 +1,17 @@
+Day 2 Task - Create a "Tip Calculator"
+
+print("Welcome to the tip calculator!")
+# User inputs bill amount
+bill = float(input("What was the total bill? $ "))
+# User inputs desired tip percentage as an integer
+tip = int(input("What percentage tip would you like to give? Enter percentage: "))
+# Tip percentage is calculated for the user
+tip = tip / 100.0
+# Tip is applied to bill with total displayed to user
+total = round((bill * tip) + bill, 2)
+print(total)
+# Input how many people are splitting, if any, and performs arithmetic.
+people = int(input("How many people to split the bill? "))
+total = total / people
+# Prints total for each person, rounded to two decimal places.
+print(f"Each person should pay: ${round(total, 2)}")
