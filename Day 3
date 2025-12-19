@@ -1,0 +1,42 @@
+If/Else
+
+print("Welcome to the rollercoaster!")
+height = int(input("What is your height in cm? "))
+if height == 120:
+    print("You can ride the rollercoaster!")
+else:
+    print("You're too short. You can't ride the rollercoaster!")
+
+
+
+
+
+Modulo
+
+number_to_check = int(input("What is your number to check? "))
+
+if number_to_check % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+
+
+
+Nesting and Elif
+
+adult_ticket = 12
+child_ticket = 5
+teen_ticket = 7
+print("Welcome to the rollercoaster!")
+height = int(input("What is your height in inches? "))
+if height >= 48:
+    print("You can ride the rollercoaster")
+    age = int(input("What is your age? "))
+    if age <= 12:
+        print(f"Please pay ${child_ticket}.")
+    elif age > 12 and age < 18:
+        print(f"Please pay ${teen_ticket}.")
+    else:
+        print(f"Please pay ${adult_ticket}.")
+else:
+    print("Sorry Frodo, you have to grow taller before you can ride.")
