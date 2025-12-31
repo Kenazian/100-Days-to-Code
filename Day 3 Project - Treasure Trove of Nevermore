@@ -35,7 +35,7 @@ if direction == "west":
            'Type "Field" to explore the field.\n').lower()
     if choice_2 == "continue":
         choice_3 = input('You decided to continue on your journey. '
-                         'The path led you to a fork in the road. Left starts up a mountain, right stays on the current trajectory. '
+                         'The path led you to a fork in the road.\nLeft starts up a mountain, right stays on the current trajectory. '
                          'Which way do you go? '
                          'Type "Left" to take the high ground. '
                          'Type "Right" to stay on course.\n').lower()
@@ -52,55 +52,59 @@ if direction == "west":
                                      'Type "Dig" to see if the treasure is there. '
                                      'Type "Wait" to revel in your success.\n').lower()
                 if choice_5 == "wait":
-                    print("Smart move. The bandits of Nevermore were closing in. You waited until the danger passed before digging up the treasure. You win!")
+                    print("Smart move. The bandits of Nevermore were closing in.\nYou waited until the danger passed before digging up the treasure.\nYou win!")
                 elif choice_5 == "dig":
-                    print("Oh no. The bandits caught up to you. They stole your treasure and tossed you off the cliff. Game Over.")
+                    print("Oh no. The bandits caught up to you.\nThey stole your treasure and tossed you off the cliff.\nGame Over.")
                 else:
                     print("You walked circles until you starved to death. Game Over.")
+            elif choice_4 == "continue":
+                print("You chose to continue walking, ignoring your intuition.\nYou made it safely back to town.\nYou will always ask yourself 'What if' now...\nGame Over.")
+            else:
+                print("While trying to decide what to do, the bandits shot arrows at you.\nOne hit you right in the knee.\nGuess your adventuring days are over.\nGame Over.")
         elif choice_3 == "right":
-            print("You continued on your trusted path. A rock fell from the mountain striking you on the head. Someone should put up a warning sign. Game Over.")
+            print("You continued on your trusted path. A rock fell from the mountain striking you on the head.\nSomeone should put up a warning sign.\nGame Over.")
         else:
             print("You started daydreaming and were ran over by a messenger on horseback. Game Over.")
     elif choice_2 == "stop":
-        print("You stopped off to admire the beauty and fell asleep. The bandits of Nevermore caught up to you and killed you. Wrong place, wrong time. Game Over.")
+        print("You stopped off to admire the beauty and fell asleep.\nThe bandits of Nevermore caught up to you and killed you.\nWrong place, wrong time.\nGame Over.")
     elif choice_2 == "field":
-        print("You decided to walk barefoot through the fields and left your path. Unable to find your way back, you panicked and caught the attention of a ravenous bear. You were mauled to death. Game Over. ")
+        print("You decided to walk barefoot through the fields and left your path.\nUnable to find your way back, you panicked and caught the attention of a ravenous bear.\nYou were mauled to death.\nGame Over. ")
     else:
-        print("A snake snuck up on you and bit you. Game Over.")
+        print("A snake snuck up on you and bit you.\nGame Over.")
 
 elif direction == "east":
-    choice_2 = input('The direction you chose led you to an odd fellow claiming to be a demon. He offered you anything in the world for your soul. What do you do? '
+    choice_2 = input('The direction you chose led you to an odd fellow claiming to be a demon.\nHe offered you anything in the world for your soul.\nWhat do you do? '
           'Type "Agree" to sell your soul. '
           'Type "Decline" to keep your soul. '
           'Type "Banish" to send the demon back to hell! ').lower()
     if choice_2 == "agree":
-        print("Why would you do that... it's a demon. He immediately takes you to hell. Game Over.")
+        print("Why would you do that... it's a demon.\nHe immediately takes you to hell.\nGame Over.")
     elif choice_2 == "banish":
-        print("You attempted to exorcise the demon back to hell. He laughed as he burned you alive. Game Over.")
+        print("You attempted to exorcise the demon back to hell.\nHe laughed as he burned you alive.\nGame Over.")
     elif choice_2 == "decline":
-        choice_3 = input('You declined the demons offer and continued on your path. '
-                         'You came to a river. What do you do? '
-                         'Type "Swim" to try and cross. '
-                         'Type "Upstream" to contiue north. '
+        choice_3 = input('You declined the demons offer and continued on your path.\n'
+                         'You came to a river. What do you do?\n'
+                         'Type "Swim" to try and cross.\n'
+                         'Type "Upstream" to contiue north.\n'
                          'Type "Downstream" to continue south.\n').lower()
         if choice_3 == "swim":
-            print("You forgot you can't swim and got swept away in the current. Game Over.")
+            print("You forgot you can't swim and got swept away in the current.\nGame Over.")
         elif choice_3 == "downstream":
-            print("You came across a small fishing village. The village was overtaken by cannibals who made you their next meal. Game Over.")
+            print("You came across a small fishing village.\nThe village was overtaken by cannibals who made you their next meal.\nGame Over.")
         elif choice_3 == "upstream":
-            choice_4 = input('You decided to go North, leading you up a hill. '
-                             'The area looks familiar. '
-                             'What do you do? '
-                             'Type "Map" to check for landmarks. '
+            choice_4 = input('You decided to go North, leading you up a hill.\n'
+                             'The area looks familiar.\n'
+                             'What do you do?\n'
+                             'Type "Map" to check for landmarks.\n'
                              'Type "Continue" to continue wondering upstream.\n').lower()
             if choice_4 == "continue":
-                print("You tripped and tumbled down the hill, falling into the river. Watch your step! Game Over.")
+                print("You tripped and tumbled down the hill, falling into the river.\nWatch your step!\nGame Over.")
             elif choice_4 == "map":
-                print('Ah, this IS the spot. You notice the bandits walking away from you and know that the danger has passed. '
-                      'You dig up the treasure and bring it back home. Congratulations! You win!\n')
+                print('Ah, this IS the spot.\nYou notice the bandits walking away from you and know that the danger has passed.\n'
+                      'You dig up the treasure and bring it back home.\nCongratulations! You win!\n')
             else:
-                print("You stumbled upon a coven of witches performing dark magic. They turned you into a toad. Game Over.")
+                print("You stumbled upon a coven of witches performing dark magic.\nThey turned you into a toad.\nGame Over.")
 else:
-    print("The direction you chose led you down a dark twisted path where you were ambushed by the bandits of Nevermore. They killed you and took what little you had. Game Over.")
+    print("The direction you chose led you down a dark twisted path where you were ambushed by the bandits of Nevermore.\nThey killed you and took what little you had.\nGame Over.")
 print("\n" * 2)
 input("Your journey has ended. Press Enter to exit")
