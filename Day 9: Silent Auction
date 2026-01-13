@@ -1,0 +1,41 @@
+Day 9 of hashtag#100DaysOfCode:
+Today was a deep dive into one of Python's most powerful data structures: dictionaries. Where lists are about order, dictionaries are about relationships. Specifically speaking, "key" : "value" pairs.
+
+Covered topics:
+✅ Key-Value Pairs: Learning how to store and retrieve data using unique identifiers.
+✅ Nesting: This is where things can get... interesting. The brain-bending work of nesting lists inside dictionaries, dictionaries inside lists, and even dictionaries inside dictionaries. Then being able to call them through different functions or dependent on user input get's wild.
+✅ Secret Auction: A challenging end on the day, incorporating the learned material. I created a program intended for multiple user input to enter names and corresponding bids. The program clears the screen between bids to ensure secrecy and then uses dictionary logic to find the corresponding key:value pair for the winning bidder.
+
+The real challenge wasn't just storing data.. it was iterating through it. Writing code that loops through a dictionary to compare distinct values and keep track of the winning value really solidified my understanding of how data flows within programs.
+
+Thinking about this aspect, you can really start seeing how dictionaries are the essential foundation for almost everything you see in web development and data science... yes you JSON.
+
+Feeling accomplished today for sure. Looking forward to day 10. Let's see what it has in store!
+
+
+import art
+print(art.logo)
+
+def winning_bidder(bids_record):
+    highest_bid = 0
+    winner = ""
+    for name in bids_record:
+        bid_amount = bids_record[name]
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = name
+    print(f"The winner is {winner} with a bid of ${highest_bid}")
+
+bids = {}
+continue_bidding = True
+
+while continue_bidding:
+    name = input("What is your name?: ")
+    amount = int(input("What is your bid?: $"))
+    bids[name] = amount
+    should_continue = input("Would you like to continue? (y/n): \n").lower()
+    if should_continue == "n":
+        continue_bidding = False
+        winning_bidder(bids)
+    elif should_continue == "y":
+        print("\n" * 30)
