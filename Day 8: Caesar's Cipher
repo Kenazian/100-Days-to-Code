@@ -1,0 +1,52 @@
+Day 8 of #100DaysofCode was a seriously fun challenge. This was all about positional and keyword arguments in functions with inputs.
+
+It really makes codes more modular and dynamic. Assigning data to specific parameters can be the key difference for readability and avoiding bugs or undesired outcomes. Total game changer in the variable realm.
+
+This project centered around created a fully functional Caesar Cipher! Being able to call specific arguments into various areas to ensure the data is properly parsed through a mathematical equation is pretty important.
+
+This project allowed me capture user input and decide which operation, which then changes the mathematical equation to encode or decode, takes the corresponding "shift" and applies that to the output. Error handling easily taken care of by omitting any character not in the predefined list of the alphabet.
+
+To top it off, a while loop keeps the user experience going until explicitly choosing to exit the program. Nice!
+
+This was an incredibly challenging and rewarding project. It really reinforced how important it is to handle "index out of range" issues, especially when the shift amount is larger than the alphabet (modulo).
+
+Every day is a good day for growing, and today, I'm feeling more confident in my ability to be a "coder" with hashtag#Python.
+
+import art
+
+print(art.logo)
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
+
+
+def caesar(original_text, shift_amount, encode_or_decode):
+    output_text = ""
+    if encode_or_decode == "decode":
+        shift_amount *= -1
+
+    for letter in original_text:
+
+        if letter not in alphabet:
+            output_text += letter
+        else:
+            shifted_position = alphabet.index(letter) + shift_amount
+            shifted_position %= len(alphabet)
+            output_text += alphabet[shifted_position]
+    print(f"Here is the {encode_or_decode}d result: {output_text}")
+
+
+should_continue = True
+
+while should_continue:
+
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
+
+    restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
+    if restart == "no":
+        should_continue = False
+        print("Goodbye")
