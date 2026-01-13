@@ -4,3 +4,21 @@ Standard hurdles, hurdles while looping, hurdles with various heights and length
 The importance if indentation was solidified on top of the other items covered.
 Final challnege, help Reeborg escape a maze, applying all the different learned material.
 
+
+#Code used to win the maze game, following the instructions of "staying to the right".
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+def turn_around():
+    turn_left()
+    turn_left()
+    
+while not at_goal():
+    if right_is_clear():
+        turn_right()
+        move()
+    elif front_is_clear():
+        move()
+    else:
+        turn_left()
