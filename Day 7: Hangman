@@ -1,0 +1,75 @@
+Day 7 of my hashtag#100DaysofCode: Hangman
+
+I didn't miss it folks, I promise. I was close earlier, but had to jet for the Saginaw Spirit hockey game. Would have been nice to see a win and not a 6-1 blowout, but it was fun nonetheless.
+
+For day 7, the project was to make a fully functional hangman game. Definitely the most demanding challenge so far. It pushed me to utilize everything in my arsenal.
+
+In order to achieve this fully I had to deploy:
+Modular Logic - Importing ASCII art and word lists from external files to add a clean graphical look with a wide range of words to choose from.
+State Management - Used lists, ranges, and len() to keep track of the hidden word and player guesses.
+Complex Loops: Nesting if/else logic inside while loops to check letters, update placeholders, account for lives, and update the stages of the game.
+
+To be honest, this took quite a bit out of me. Both in time and mental brain bashing. I hit a few snags and had to recall some prior notes, but that's part of the learning process!
+
+I haven't gotten a "You win!" prompt yet... I guess I'm not really good at hangman and don't plan on applying for wheel of fortune anytime soon.
+
+Definitely going to be feeling this decision to power through this in a few hours when it's time to wake back up and do another whole day.. anybody got one of those beer hats? Just need to fill it up with coffee in the morning.
+
+
+
+import random
+from hangman_words import word_list
+from hangman_art import stages, logo
+lives = 6
+
+print(logo)
+chosen_word = random.choice(word_list)
+print(chosen_word)
+
+placeholder = ""
+word_length = len(chosen_word)
+for position in range(word_length):
+    placeholder += "_"
+print("Word to guess: " + placeholder)
+
+game_over = False
+correct_letters = []
+
+while not game_over:
+
+    print("****************************<???>/6 LIVES LEFT****************************")
+    guess = input("Guess a letter: ").lower()
+
+    if guess in correct_letters:
+        print(f"You already guessed {guess}")
+
+    display = ""
+
+    for letter in chosen_word:
+        if letter == guess:
+            display += letter
+            correct_letters.append(guess)
+        elif letter in correct_letters:
+            display += letter
+        else:
+            display += "_"
+
+    print("Word to guess: " + display)
+
+
+    if guess not in chosen_word:
+        lives -= 1
+
+        if guess not in chosen_word:
+            print("Letter " + guess + " is not in the word. You're one step closer to death!")
+
+        if lives == 0:
+            game_over = True
+
+            print(f"It was {chosen_word}! YOU LOSE!")
+
+    if "_" not in display:
+        game_over = True
+        print("Good job Mr. Smarty Pants, you get to live another day!")
+
+    print(stages[lives])
