@@ -1,0 +1,60 @@
+Day 10 of hashtag#100DaysofCode just wrapped up. I gotta say... I spent a good amount of time today going over notes after hitting the meat of today's topic, functions with outputs. My poor wife got a crash course in me explaining everything so far.. her eye only twitched a few times. 😬 Bless her heart!
+
+That was much needed to recall though, so glad she let me nerd out!
+
+It was such a "brain-burner" focusing on all that and then the power of the return statement.
+
+The TL;DR on today's grind:
+✅ Return vs. Print: Learned how to make functions actually "hand back" data so it can be used elsewhere, rather than just displaying it.
+✅ Multiple Return Statements: Using logic to exit functions early based on specific conditions (guard clauses).
+✅ Recursion & Flag Variables: Figuring out how to keep a program running based on user input or even having a function call itself.
+
+The Project: A Recursive Calculator 🔢 I built a full-function calculator that can perform continuous operations. The real challenge was managing the logic that allows a user to keep performing calculations on the previous result or start a brand-new one from scratch.
+
+My brain is officially fried, but the logic is starting to feel second nature. Time to step away from the screen! ☕️💤
+
+
+
+
+import art
+
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def multiply(n1, n2):
+    return n1 * n2
+
+def divide(n1, n2):
+    return n1 / n2
+
+operations = {
+    "+" : add,
+    "-" : subtract,
+    "*" : multiply,
+    "/" : divide,
+}
+def calculator():
+    print(art.logo)
+    performing_operations = True
+    n1 = float(input("Enter a number: "))
+
+    while performing_operations:
+        for symbol in operations:
+            print(symbol)
+        operator = input("Enter an operator: ")
+        n2 = float(input("Enter another number: "))
+        result = operations[operator](n1, n2)
+        print(f"{n1} {operator} {n2} = {result}")
+
+        performing_operations = input(f"Continue calculating with {result} (y/n)?: ").lower()
+        if performing_operations == "y":
+            n1 = result
+        else:
+            performing_operations = False
+            print("\n" * 30)
+            calculator()
+
+calculator()
