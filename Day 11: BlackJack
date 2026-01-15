@@ -1,0 +1,85 @@
+Day 11 of hashtag#100DaysOfCode is in the books. All I can say is wow... excuse me while I go throw down a few ibuprofen, because my brain is inflamed!
+
+Today was a big achievement despite the pounding headache. A test of everything learned so far to make a fully functional blackjack game.
+
+Why this was a level-up: Instead of learning a new tiny syntax trick, I had to architect a complex game flow from scratch. This required:
+🃏 Complex Game Logic: Handling the dealer’s hits vs. the player’s choices.
+❗ The "Ace" Problem: Writing logic to dynamically change an Ace's value from 11 to 1 if the total score exceeds 21.
+🔄 State Management: Tracking cards, scores, and win/loss conditions simultaneously.
+🍝 Clean Code: Using functions to keep the game "re-playable" without the code turning into spaghetti.
+
+This project showed the difference between "knowing" what a while loop is, and knowing how to use it to control a complex user experience. Took a lot of debugging and tests, but seeing it all come together and challenging myself was incredibly rewarding. Especially when everything just comes together and works seamlessly.
+
+Oh goodness, is it time for supper now? Spaghetti anyone? 🤪 
+
+
+import random
+import art
+
+def deal():
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    card = random.choice(cards)
+    return card
+
+def calculate(cards):
+    if sum(cards) == 21 and len(cards) == 2:
+        return 0
+
+    if 11 in cards and sum(cards) > 21:
+        cards.remove(11)
+        cards.append(1)
+    return sum(cards)
+
+def totals(u_total, c_total):
+    if u_total == c_total:
+        return "It's a draw!"
+    elif c_total == 0:
+        return "You lose! The house has blackjack! 😱"
+    elif u_total == 0:
+        return "You have blackjack! You win!"
+    elif u_total > 21:
+        return "You busted! Game Over!"
+    elif c_total > 21:
+        return "Opponent busted! You win!"
+    elif u_total > c_total:
+        return "You beat the house! You win!"
+    else:
+        return "You lose!"
+
+
+def blackjack():
+    print(art.logo)
+    player_cards = []
+    computer_cards = []
+    player_score = -1
+    computer_score = -1
+    game_over = False
+
+    for _ in range(2):
+        player_cards.append(deal())
+        computer_cards.append(deal())
+    while not game_over:
+        player_score = calculate(player_cards)
+        computer_score = calculate(computer_cards)
+        print(f"Your cards are : {player_cards}. Your total is: {player_score}")
+        print(f"Computers first card is: {computer_cards[0]}")
+
+        if player_score == 0 or computer_score == 0 or player_score > 21:
+            game_over = True
+        else:
+            should_hit = input("Do you want hit? [Y/N]: ").lower()
+            if should_hit == "y":
+                player_cards.append(deal())
+            else:
+                game_over = True
+    while computer_score != 0 and computer_score < 17:
+        computer_cards.append(deal())
+        computer_score = calculate(computer_cards)
+
+    print(f"Your final cards are: {player_cards}. Your final total is: {player_score}")
+    print(f"Opponent's final cards are: {computer_cards}. Opponent's final total is: {computer_score}")
+    print(totals(player_score, computer_score))
+
+while input("Do you want to play some blackjack? Type 'y' or 'n': ").lower() == "y":
+    print("\n" * 30)
+    blackjack()
